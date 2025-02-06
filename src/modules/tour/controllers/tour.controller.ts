@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   FileTypeValidator,
   Get,
   MaxFileSizeValidator,
@@ -12,15 +13,14 @@ import {
   UploadedFile,
   UseInterceptors,
 } from "@nestjs/common";
-import { TourService } from "./tour.service";
+
 import { ApiConsumes, ApiTags } from "@nestjs/swagger";
 import { SwaggerConsumes } from "src/common/enums/swagger-consumes.enum";
 import { UploadFileS3 } from "src/common/interceptor/upload-file.interceptor";
-import { CreateTourDto, UpdateTourDto } from "./dto/tour.dto";
+import { CreateTourDto, UpdateTourDto } from "../dto/tour.dto";
 import { AuthDecorator } from "src/common/decorators/auth.decorator";
 import { SkipAuth } from "src/common/decorators/skip-auth.decorator";
-import { CanAccessRoles } from "src/common/decorators/role.decorator";
-import { Roles } from "src/common/enums/role.enum";
+import { TourService } from "../services/tour.service";
 
 @Controller("tour")
 @ApiTags("Tour")
@@ -52,7 +52,19 @@ export class TourController {
     return this.tourService.getAll();
   }
 
-  @Patch(":id")
+  @Get("/leader/:id")
+  @SkipAuth()
+  getTourByLeader(@Param("id", ParseIntPipe) id: number) {
+    return this.tourService.getTourByLeader(+id);
+  }
+
+  @Get("/:id")
+  @SkipAuth()
+  getTourById(@Param("id", ParseIntPipe) id: number) {
+    return this.tourService.getTourById(+id);
+  }
+
+  @Patch("/:id")
   @UseInterceptors(UploadFileS3("image"))
   @ApiConsumes(SwaggerConsumes.MultipartData)
   update(
@@ -69,5 +81,10 @@ export class TourController {
     image: Express.Multer.File
   ) {
     return this.tourService.update(id, image, udateDto);
+  }
+
+  @Delete("/:id")
+  delete(@Param("id", ParseIntPipe) id: number) {
+    return this.tourService.remove(+id);
   }
 }

@@ -7,11 +7,22 @@ import { TourEntity } from "./tour.entity";
 export class PassengerEntity {
   @PrimaryGeneratedColumn("increment")
   id: number;
-  userId: number;
+
+  @Column()
+  firstname: string;
+  @Column()
+  lastname: string;
+
+  @Column()
+  identity: string;
+
   @Column()
   tourId: number;
-  @ManyToOne(() => UserEntiy, (user) => user.tours)
-  user: UserEntiy;
   @ManyToOne(() => TourEntity, (tour) => tour.passengers)
   tour: TourEntity;
+
+  @Column()
+  userId: number;
+  @ManyToOne(() => UserEntiy, (user) => user.passengers)
+  user: UserEntiy;
 }

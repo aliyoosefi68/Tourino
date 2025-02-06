@@ -43,8 +43,9 @@ export class UserEntiy {
   otp_code: string;
   @Column({ nullable: true })
   otp_expired_in: Date;
-  @OneToMany(() => PassengerEntity, (passenger) => passenger.tour)
-  tours: TourEntity[];
+  @OneToMany(() => PassengerEntity, (passenger) => passenger.user)
+  passengers: PassengerEntity[];
+
   @OneToMany(() => TourEntity, (tour) => tour.leader)
   myTours: TourEntity[];
 }

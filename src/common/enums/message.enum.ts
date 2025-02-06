@@ -22,6 +22,7 @@ export enum NotFoundMessage {
   NotFoundCategory = "دسته بندی یافت نشد",
   NotFoundPost = "مقاله ای یافت نشد",
   NotFoundUser = "کاربری یافت نشد",
+  NotFoundTour = "توری با این مشخصات یافت نشد!",
 }
 export enum ValidationMessage {
   InvalidImageFormat = "فرمت تصریر انتخاب شده باید ار نوع jpg و png باشد",
@@ -44,6 +45,9 @@ export enum PublicMessage {
   UnFollow = "از لیست دنبال شوندگان حذف شد",
   Blocked = "حساب کاربری با موفقیت مسدود شد",
   UnBlocked = "حساب کاربری از حالت مسدود خارج شد",
+  TourUnavailable = "متاسفانه تور مورد نظر با مشکل مواجه شده برای تور دیگر اقدام کنید",
+  TourCapacityComplated = "ظرفیت تور تکمیل شده ",
+  TourExpired = "زمان ثبت نام در تور به پایان رسیده",
 }
 export enum ConflictMessage {
   CategoryTitle = "عنوان دسته بندی قبلا ثبت شده است",
@@ -53,4 +57,8 @@ export enum ConflictMessage {
 }
 export enum LeaderMessage {
   WrongLeader = "این کاربر لیدر نیست .لطفا دقت کنید",
+}
+
+export enum PassengerMessage {
+  AlreadyExistPassenger = "مسافری با این مشخصات برای این تور از قبل وجود دارد",
 }
