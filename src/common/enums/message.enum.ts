@@ -23,6 +23,7 @@ export enum NotFoundMessage {
   NotFoundPost = "مقاله ای یافت نشد",
   NotFoundUser = "کاربری یافت نشد",
   NotFoundTour = "توری با این مشخصات یافت نشد!",
+  NotFoundPassenger = "مسافری یافت نشد",
 }
 export enum ValidationMessage {
   InvalidImageFormat = "فرمت تصریر انتخاب شده باید ار نوع jpg و png باشد",
@@ -48,6 +49,7 @@ export enum PublicMessage {
   TourUnavailable = "متاسفانه تور مورد نظر با مشکل مواجه شده برای تور دیگر اقدام کنید",
   TourCapacityComplated = "ظرفیت تور تکمیل شده ",
   TourExpired = "زمان ثبت نام در تور به پایان رسیده",
+  BookingSuccessfully = "رزرو تور با موفقیت انجام شد",
 }
 export enum ConflictMessage {
   CategoryTitle = "عنوان دسته بندی قبلا ثبت شده است",

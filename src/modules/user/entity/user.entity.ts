@@ -10,6 +10,7 @@ import { Gender } from "../enum/gender.enum";
 import { TourEntity } from "src/modules/tour/entity/tour.entity";
 import { PassengerEntity } from "src/modules/tour/entity/passenger.entity";
 import { Roles } from "src/common/enums/role.enum";
+import { BookingEntity } from "src/modules/booking/entity/booking.entity";
 
 @Entity(EntityNames.User)
 export class UserEntiy {
@@ -48,4 +49,7 @@ export class UserEntiy {
 
   @OneToMany(() => TourEntity, (tour) => tour.leader)
   myTours: TourEntity[];
+
+  @OneToMany(() => BookingEntity, (booking) => booking.user)
+  bookings: BookingEntity[];
 }

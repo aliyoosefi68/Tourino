@@ -1,10 +1,11 @@
-import { ConfigurableModuleBuilder, Module } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { join } from "path";
 import { TypeOrmConfig } from "src/config/typeorm.config";
 import { AuthModule } from "./auth/auth.module";
 import { TourModule } from "./tour/tour.module";
+import { BookingModule } from "./booking/booking.module";
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { TourModule } from "./tour/tour.module";
     TypeOrmModule.forRoot(TypeOrmConfig()),
     AuthModule,
     TourModule,
+    BookingModule,
   ],
   controllers: [],
   providers: [],

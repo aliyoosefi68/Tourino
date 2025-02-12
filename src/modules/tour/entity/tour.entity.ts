@@ -1,9 +1,16 @@
 import { EntityNames } from "src/common/enums/entity.enum";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { TransferType } from "../enum/transfer.enum";
 import { StatusTour } from "../enum/status.enum";
 import { PassengerEntity } from "./passenger.entity";
 import { UserEntiy } from "src/modules/user/entity/user.entity";
+import { BookingEntity } from "src/modules/booking/entity/booking.entity";
 
 @Entity(EntityNames.Tour)
 export class TourEntity {
@@ -51,4 +58,10 @@ export class TourEntity {
   plane: string;
   @OneToMany(() => PassengerEntity, (passenger) => passenger.tour)
   passengers: PassengerEntity[];
+
+  @OneToMany(() => BookingEntity, (booking) => booking.tour)
+  bookings: BookingEntity[];
+
+  @CreateDateColumn()
+  create_at: Date;
 }

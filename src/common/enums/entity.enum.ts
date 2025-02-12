@@ -4,4 +4,5 @@ export enum EntityNames {
   Passenger = "passenger",
   Blog = "blog",
   Auth = "auth",
+  Booking = "booking",
 }

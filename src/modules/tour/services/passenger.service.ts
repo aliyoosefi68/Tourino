@@ -68,4 +68,37 @@ export class PassengerService {
 
     return { message: PublicMessage.Created };
   }
+
+  async getPassengerOfTour(tourId: number) {
+    const tour = await this.tourRepository.findOneBy({ id: tourId });
+    if (!tour) throw new NotFoundException(NotFoundMessage.NotFoundTour);
+    const passengers = await this.passengerRepository.find({
+      where: { tourId },
+    });
+
+    return passengers;
+  }
+  async getPassengerOfUserInTour(tourId: number) {
+    const { id: userID } = this.request.user;
+    const tour = await this.tourRepository.findOneBy({ id: tourId });
+    if (!tour) throw new NotFoundException(NotFoundMessage.NotFoundTour);
+    const passengers = await this.passengerRepository.find({
+      relations: { user: true },
+      where: { tourId, user: { id: userID } },
+    });
+
+    if (!passengers)
+      throw new NotFoundException(NotFoundMessage.NotFoundPassenger);
+    return passengers;
+  }
+
+  async removePassenger(id: number) {
+    const passenger = await this.passengerRepository.findOneBy({ id });
+    if (!passenger)
+      throw new NotFoundException(NotFoundMessage.NotFoundPassenger);
+    await this.passengerRepository.delete({ id });
+    return {
+      message: PublicMessage.Deleted,
+    };
+  }
 }
