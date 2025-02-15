@@ -20,8 +20,10 @@ export class BookingEntity {
 
   @Column({ default: false }) // وضعیت پرداخت
   isPaid: boolean;
+
   @Column()
   tourId: number;
+
   @ManyToOne(() => TourEntity, (tour) => tour.bookings, { onDelete: "CASCADE" })
   tour: TourEntity;
 
@@ -29,6 +31,7 @@ export class BookingEntity {
     onDelete: "CASCADE",
   })
   passengers: PassengerEntity[];
+
   @Column()
   userId: number;
   @ManyToOne(() => UserEntiy, (user) => user.bookings, { onDelete: "CASCADE" })
