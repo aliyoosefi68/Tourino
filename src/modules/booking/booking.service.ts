@@ -1,4 +1,4 @@
-import { Inject, Injectable, Scope } from "@nestjs/common";
+import { Inject, Injectable, NotFoundException, Scope } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { BookingEntity } from "./entity/booking.entity";
 import { DeepPartial, Repository } from "typeorm";
@@ -51,11 +51,21 @@ export class BookingService {
   }
   async getBookingByUser() {
     const { id: userId } = this.req.user;
-    const booking = await this.bookingRepository.find({
+    const booking = await this.bookingRepository.findOne({
       relations: { passengers: true },
       where: { userId },
     });
 
     return booking;
+  }
+
+  async findOne(id: number) {
+    const booking = await this.bookingRepository.findOneBy({ id });
+    if (!booking) throw new NotFoundException();
+    return booking;
+  }
+
+  async save(booking: BookingEntity) {
+    return await this.bookingRepository.save(booking);
   }
 }

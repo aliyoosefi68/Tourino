@@ -19,5 +19,6 @@ import { S3Service } from "../s3/s3.service";
   ],
   providers: [BookingService, TourService, S3Service, PassengerService],
   controllers: [BookingController],
+  exports: [BookingService, TypeOrmModule],
 })
 export class BookingModule {}

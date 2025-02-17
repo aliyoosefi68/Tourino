@@ -11,6 +11,7 @@ import { TourEntity } from "src/modules/tour/entity/tour.entity";
 import { PassengerEntity } from "src/modules/tour/entity/passenger.entity";
 import { Roles } from "src/common/enums/role.enum";
 import { BookingEntity } from "src/modules/booking/entity/booking.entity";
+import { PaymentEntity } from "src/modules/payment/entity/payment.entity";
 
 @Entity(EntityNames.User)
 export class UserEntiy {
@@ -52,4 +53,7 @@ export class UserEntiy {
 
   @OneToMany(() => BookingEntity, (booking) => booking.user)
   bookings: BookingEntity[];
+
+  @OneToMany(() => PaymentEntity, (payment) => payment.user)
+  payments: PaymentEntity[];
 }

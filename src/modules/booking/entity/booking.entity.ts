@@ -1,4 +1,5 @@
 import { EntityNames } from "src/common/enums/entity.enum";
+import { PaymentEntity } from "src/modules/payment/entity/payment.entity";
 import { PassengerEntity } from "src/modules/tour/entity/passenger.entity";
 import { TourEntity } from "src/modules/tour/entity/tour.entity";
 import { UserEntiy } from "src/modules/user/entity/user.entity";
@@ -39,4 +40,7 @@ export class BookingEntity {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @OneToMany(() => PaymentEntity, (payment) => payment.booking)
+  payments: PaymentEntity[];
 }

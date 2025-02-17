@@ -6,6 +6,8 @@ import { TypeOrmConfig } from "src/config/typeorm.config";
 import { AuthModule } from "./auth/auth.module";
 import { TourModule } from "./tour/tour.module";
 import { BookingModule } from "./booking/booking.module";
+import { PaymentModule } from "./payment/payment.module";
+import { HttpApiModule } from "./http/http.module";
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { BookingModule } from "./booking/booking.module";
     AuthModule,
     TourModule,
     BookingModule,
+    PaymentModule,
+    HttpApiModule,
   ],
   controllers: [],
   providers: [],

@@ -5,4 +5,5 @@ export enum EntityNames {
   Blog = "blog",
   Auth = "auth",
   Booking = "booking",
+  Payment = "payment",
 }

@@ -50,6 +50,7 @@ export enum PublicMessage {
   TourCapacityComplated = "ظرفیت تور تکمیل شده ",
   TourExpired = "زمان ثبت نام در تور به پایان رسیده",
   BookingSuccessfully = "رزرو تور با موفقیت انجام شد",
+  PaymentSuccessfully = "پرداخت با موفقیت انجام شد",
 }
 export enum ConflictMessage {
   CategoryTitle = "عنوان دسته بندی قبلا ثبت شده است",
